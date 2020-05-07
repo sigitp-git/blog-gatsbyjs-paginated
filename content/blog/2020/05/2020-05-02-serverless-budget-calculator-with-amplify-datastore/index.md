@@ -23,6 +23,7 @@ This tutorial describes simple data manipulation on Amplify DataStore as describ
 
 These code snippets are the main Amplify DataStore interaction between Front-End React.JS and Amplify Datastore: **Query, Save, Delete, Update, and Delete All.**
 
+```javascript
 // Amplify Datastore Functions
 async function listExpenses() {
 const expenses = await DataStore.query(Expense, Predicates.ALL);
@@ -52,6 +53,7 @@ handleAlert({type: "danger", text: "items cleared"})
 }
 
 useEffect(() => {listExpenses()}, \[expenses\])
+```
 
 Follow below step-by-step approach to reproduce the App and learn.
 
@@ -59,55 +61,87 @@ Follow below step-by-step approach to reproduce the App and learn.
 
 Install Amplify CLI
 
+```javascript
 npm i -g @aws-amplify/cli
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#create-a-new-react-app)Create a new react app, clone from the repository
 
+```javascript
 git clone https://github.com/sigitp-git/budgetcalc-amplify-datastore.git
 
 cd budgetcalc-amplify-datastore
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#add-datastore-to-your-app)Add DataStore to your app
 
 Add support for datastore, it creates the API for you (there is no need to type `amplify add api` after this)
 
+```javascript
 npx amplify-app
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#add-our-graphql-schema)Check GraphQL schema here
 
+```javascript
 cat amplify/backend/api/amplifyDatasource/schema.graphql
 
 type Expense @model {
 id: ID!
 charge: String!
 amount: String!
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#add-dependencies)Add dependencies
 
+```javascript
 npm i @aws-amplify/core @aws-amplify/datastore 
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#run-modelgen)Run modelgen
 
 Model-Gen generates code to implement language specific model classes.
 
+```javascript
 npm run amplify-modelgen
+```
 
 At this stage, you can already use the app in standalone mode. No AWS Account is required. However, you can continue with below steps to utilize cloud backend.
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#create-the-cloud-based-backend)Create the cloud-based backend
 
+```javascript
 npm run amplify-push
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#implement--start-the-app)Implement & Start the App
 
-\# start the app, your browser should open the app at http://localhost:3000
+```javascript
+# start the app, your browser should open the app at http://localhost:3000
 npm start
+```
+
+
 
 ## [](https://github.com/sebsto/amplify-datastore-js-e2e#cleanup)Cleanup
 
 At the end of your test, you can delete the backend infrastructure
 
+```javascript
 amplify delete
+```
 
 You might need to manually delete two Amazon S3 buckets created. In the [AWS Console](https://s3.console.aws.amazon.com/s3/home), search for the two buckets having `datastore` part of their name.
 
@@ -115,6 +149,7 @@ You might need to manually delete two Amazon S3 buckets created. In the [AWS Co
 
 You can host your app using Amplify Console for CI/CD purposes. First create a repository on Github for example, then commit your changes.
 
+```javascript
 yourappfolder$ git init
 yourappfolder$ git add .
 yourappfolder$ git commit -m "first commit"
@@ -124,6 +159,9 @@ yourappfolder$ git push -u origin master
 Initiate Amplify Console by using:
 
 amplify add hosting
+```
+
+
 
 #select using arrow keys, enter
 Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)

@@ -49,10 +49,12 @@ Skip the **npm** and **amplify** CLI instructions for now, we will do this on th
 
 Check if the **aws-exports.js** file downloaded:
 
+```javascript
 sigitp@host-38f9d335e654:$ **cd ~/Downloads**
 
 sigitp@host-38f9d335e654:Downloads$ **ls -la | grep aws-exports.js**
 -rw-r--r--@  1 sigitp  1896053708   421 Nov  2 21:16 aws-exports.js
+```
 
 _Note that AppSync supports native iOS and Android integration. Personally for me, once you familiar with ReactJS, you can expand your knowledge with React Native where your JavaScript code can be compiled into native iOS or Android application. Unfortunately due to my limited workstation disk, I can't simulate iOS/Android app with React Native due to high storage requirement._
 
@@ -62,48 +64,58 @@ Prepare your ReactJS development by installing NPM and NodeJS on your workstatio
 
 Verify by executing these two commands:
 
+```javascript
 sigitp@host-38f9d335e654:~$ **npm -v**
 6.12.0
 sigitp@host-38f9d335e654:~$ **node -v**
 v12.13.0
 sigitp@host-38f9d335e654:~$ 
+```
 
 _Optional: setup your IDE, I personally use VS Code:_ [_https://code.visualstudio.com_](https://code.visualstudio.com)
 
 **Step 1. Clone The Front-End Web Application**
 
+```javascript
 sigitp@host-38f9d335e654:~$ **git clone https://github.com/aws-samples/aws-mobile-appsync-events-starter-react.git**
 
 sigitp@host-38f9d335e654:~$ **cd ./aws-mobile-appsync-events-starter-react**
 
 Next, install Amplify CLI, this step only need to be done once, you don't need to install it again if you want to create new application.
 
-sigitp@host-38f9d335e654:$ **npm install -g @aws-amplify/cli**
+sigitp@host-38f9d335e654:$ **npm install -g @aws-amplify/cli
+```
 
 Now, lets initiate Amplify, setup Back-End GraphQL API integration with our Front-End Web Application.
 
+```javascript
 sigitp@host-38f9d335e654:$ **cd aws-mobile-appsync-events-starter-react**
 
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **amplify init**
 
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **amplify add codegen --apiId <yourapihashkeys>**
 
-sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **amplify codegen**
+sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **amplify codegen
+```
 
 To ensure our sample Front-End Web Application can communicate with our previously configured Back-End, replace the **aws-exports.js** file inside the **src** directory with the downloaded **aws-exports.js** _(on Step 3 of Backend Setup done previously, located on my Downloads folder)_.
 
+```javascript
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **cp ~/Downloads/aws-export.js ./src/**
 
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **cd src/**
 
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react/src$ **ls -la | grep aws-exports.js**
 -rw-r--r--@  1 sigitp  1896053708   421 Nov  2 21:16 aws-exports.js
+```
 
 **Step 2. Start Front-End Web Application Locally**
 
+```javascript
 sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **yarn**
 
-sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **yarn start**
+sigitp@host-38f9d335e654:aws-mobile-appsync-events-starter-react$ **yarn start
+```
 
 Above commands will install application packages and compile the code to run on your local workstation.
 
