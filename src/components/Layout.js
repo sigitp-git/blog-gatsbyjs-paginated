@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import './layout.css'
 
 import { rhythm, scale } from '../utils/typography'
 
@@ -18,8 +19,9 @@ class Layout extends React.Component {
       header = (
         <h1
           style={{
-            ...scale(1.5),
+            ...scale(1.2),
             marginBottom: rhythm(1.5),
+            fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
           }}
         >
@@ -27,7 +29,7 @@ class Layout extends React.Component {
             style={{
               boxShadow: `none`,
               textDecoration: `none`,
-              color: `inherit`,
+              color: `darkslateblue`,
             }}
             to={`/`}
           >
@@ -37,8 +39,10 @@ class Layout extends React.Component {
       )
     } else {
       header = (
-        <h3
+        <h1
           style={{
+            ...scale(1.2),
+            marginBottom: rhythm(1.5),
             fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
           }}
@@ -47,13 +51,13 @@ class Layout extends React.Component {
             style={{
               boxShadow: `none`,
               textDecoration: `none`,
-              color: `inherit`,
+              color: `darkslateblue`,
             }}
             to={`/`}
           >
             {title}
           </Link>
-        </h3>
+        </h1>
       )
     }
     return (

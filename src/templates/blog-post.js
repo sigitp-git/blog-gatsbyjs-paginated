@@ -6,6 +6,22 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
+import '../components/layout.css'
+
+import styled from "styled-components"
+
+const BlogLink = styled(Link)`
+  text-decoration: none;
+`
+const BlogTitle = styled.h3`
+  margin-bottom: 5px;
+  color: darkslateblue;
+`
+const PagingTitle = styled.h4`
+  margin-bottom: 5px;
+  color: darkslateblue;
+`
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
@@ -15,7 +31,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
+        <h1>{post.frontmatter.title}</h1><br/>
         <p
           style={{
             ...scale(-1 / 5),
@@ -45,16 +61,16 @@ class BlogPostTemplate extends React.Component {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
+              <BlogLink to={previous.fields.slug} rel="prev">
+                <PagingTitle>← {previous.frontmatter.title}</PagingTitle>
+              </BlogLink>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
+              <BlogLink to={next.fields.slug} rel="next">
+                <PagingTitle>{next.frontmatter.title} →</PagingTitle>
+              </BlogLink>
             )}
           </li>
         </ul>

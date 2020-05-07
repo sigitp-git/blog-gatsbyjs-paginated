@@ -6,6 +6,22 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import { rhythm } from '../utils/typography'
 
+import '../components/layout.css'
+
+import styled from "styled-components"
+
+const BlogLink = styled(Link)`
+  text-decoration: none;
+`
+const BlogTitle = styled.h3`
+  margin-bottom: 5px;
+  color: darkslateblue;
+`
+const PagingTitle = styled.h6`
+  margin-bottom: 5px;
+  color: darkslateblue;
+`
+
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
@@ -33,9 +49,9 @@ class BlogIndex extends React.Component {
                   marginBottom: rhythm(1 / 4),
                 }}
               >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
+                <BlogLink style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                  <BlogTitle>{title}</BlogTitle>
+                </BlogLink>
               </h3>
               <small>{node.frontmatter.date}</small>
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
@@ -53,9 +69,9 @@ class BlogIndex extends React.Component {
           }}
         >
           {!isFirst && (
-            <Link to={prevPage} rel="prev">
-              ← Previous Page
-            </Link>
+            <BlogLink to={prevPage} rel="prev" style={{color: 'darkslateblue'}}>
+              <PagingTitle>← Previous Page</PagingTitle>
+            </BlogLink>
           )}
           {Array.from({ length: numPages }, (_, i) => (
             <li
@@ -64,23 +80,23 @@ class BlogIndex extends React.Component {
                 margin: 0,
               }}
             >
-              <Link
+              <BlogLink
                 to={`/${i === 0 ? '' : i + 1}`}
                 style={{
                   padding: rhythm(1 / 4),
                   textDecoration: 'none',
-                  color: i + 1 === currentPage ? '#ffffff' : '',
-                  background: i + 1 === currentPage ? '#007acc' : '',
+                  color: i + 1 === currentPage ? '#ffffff' : 'darkslateblue',
+                  background: i + 1 === currentPage ? 'darkslateblue' : '',
                 }}
               >
                 {i + 1}
-              </Link>
+              </BlogLink>
             </li>
           ))}
           {!isLast && (
-            <Link to={nextPage} rel="next">
-              Next Page →
-            </Link>
+            <BlogLink to={nextPage} rel="next" style={{color: 'darkslateblue'}}>
+              <PagingTitle>Next Page →</PagingTitle>
+            </BlogLink>
           )}
         </ul><br/><hr/>
         <footer>

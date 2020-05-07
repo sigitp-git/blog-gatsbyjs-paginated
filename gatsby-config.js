@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Sigit Blog',
+    title: 'sigit.cloud',
     author: 'Sigit Priyanggoro',
     description:
       'A paginated starter blog demonstrating what Gatsby can do. Extension of gatsby-starter-blog.',
