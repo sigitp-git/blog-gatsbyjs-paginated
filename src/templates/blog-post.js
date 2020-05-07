@@ -58,6 +58,10 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <footer>
+        <h5>Disclaimer</h5>
+        <p>Any views or opinions expressed here are strictly my own. While I work for Amazon Web Services (AWS), this blog is not my job for AWS. I am solely responsible for all content published here. This is a personal exploration blog, not a corporate blog. Content published here is not read, reviewed, or approved in advance by my employer and does not necessarily represent or reflect the views or opinions of my employer or any of its divisions, subsidiaries, or business partners.</p><br/><br/><hr/>
+        </footer>
       </Layout>
     )
   }
