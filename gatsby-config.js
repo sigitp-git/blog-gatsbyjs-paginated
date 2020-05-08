@@ -2,15 +2,27 @@ module.exports = {
   siteMetadata: {
     title: 'sigit.cloud',
     author: 'Sigit Priyanggoro',
+    work: 'Sr Global Partner Solutions Architect',
+    company: 'Amazon Web Services',
+    city: 'Dallas',
     description:
       'A paginated starter blog demonstrating what Gatsby can do. Extension of gatsby-starter-blog.',
     siteUrl: 'https://nickymeuleman.github.io/gatsby-paginated-blog/',
     social: {
-      twitter: `sigitpriyanggoro`,
+      linkedin: `sigitpriyanggoro`,
     },
   },
   pathPrefix: '/gatsby-paginated-blog',
   plugins: [
+    // {
+    //   resolve: `gatsby-plugin-appsync`,
+    //   options: {
+    //     mandatorySignIn: false, // true | false
+    //     oauth: {}, // optional for cognito hosted UI
+    //     cookieStorage: {}, // optional if you intend to use cookies. Default is localstorage for aws amplify Auth
+    //     clientMetadata: {} // optional for aws amplify Auth
+    //   },
+    // },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

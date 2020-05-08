@@ -37,6 +37,7 @@
     "typography-theme-wordpress-2016": "^0.15.10"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^1.2.0",
@@ -54,8 +55,8 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
-    "develop": "gatsby develop",
+    "dev": "env-cmd .env.devevelopment gatsby develop",
+    "develop": "env-cmd .env.devevelopment gatsby develop",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md'",
