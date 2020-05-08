@@ -28,10 +28,10 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in Dallas building useful things.
+              Written by <strong>{author}</strong>, Sr Global Partner Solutions Architect at AWS in Dallas.
               {` `}
-              <a href={`https://www.linkedin.com/in/${social.twitter}`}>
-                My LinkedIn. 
+              <a href={`https://www.linkedin.com/in/${social.twitter}`} target="_blank">
+                LinkedIn. 
               </a>
             </p>
           </div>
