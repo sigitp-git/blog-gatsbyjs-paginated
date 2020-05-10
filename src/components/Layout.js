@@ -1,61 +1,84 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react'
+import { Link } from 'gatsby'
+import './layout.css'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { rhythm, scale } from '../utils/typography'
 
-import Header from "./header"
-import "./layout.css"
+class Layout extends React.Component {
+  render() {
+    const { location, title, children } = this.props
+    const isRootPath = location.pathname === `${__PATH_PREFIX__}/`
+    const pageNumber = location.pathname
+      .split('/')
+      .filter(Boolean)
+      .pop()
+    const isPaginatedPath = pageNumber && Boolean(pageNumber.match(/^[0-9]+$/))
+    let header
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+    if (isRootPath || isPaginatedPath) {
+      header = (
+        <h1
+          style={{
+            ...scale(1.2),
+            marginBottom: rhythm(1.5),
+            fontFamily: `Montserrat, sans-serif`,
+            marginTop: 0,
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `darkslateblue`,
+            }}
+            to={`/`}
+          >
+            {title}
+          </Link>
+        </h1>
+      )
+    } else {
+      header = (
+        <h1
+          style={{
+            ...scale(1.2),
+            marginBottom: rhythm(1.5),
+            fontFamily: `Montserrat, sans-serif`,
+            marginTop: 0,
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `darkslateblue`,
+            }}
+            to={`/`}
+          >
+            {title}
+          </Link>
+        </h1>
+      )
     }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+    return (
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          marginLeft: `auto`,
+          marginRight: `auto`,
+          maxWidth: rhythm(24),
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
-        <main>{children}</main>
-        <hr/>
+        {header}
+        {children}
         <footer>
-          <Link to="/">Home</Link>{` `}
-          <Link to="/about/">About</Link>{` `}
-          <Link to="/disclaimer/">Disclaimer</Link>{` `}
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org" target="_blank" rel="noopener noreferrer">Gatsby</a>
-          {` `}
-          <a href="https://aws.amazon.com/amplify/" target="_blank" rel="noopener noreferrer">Amplify</a>
-          {` `}
-          <a href="https://aws.amazon.com/appsync/" target="_blank" rel="noopener noreferrer">AppSync</a>
-          {` `}
-          <span style={{'color': 'darkslateblue'}}>#darkslateblue</span>
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+    )
+  }
 }
 
 export default Layout
